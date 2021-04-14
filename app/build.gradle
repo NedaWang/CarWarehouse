@@ -26,6 +26,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // Enable view binding in a module
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
