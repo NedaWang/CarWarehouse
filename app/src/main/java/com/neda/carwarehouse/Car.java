@@ -1,0 +1,75 @@
+package com.neda.carwarehouse;
+
+public class Car {
+    private String maker;
+    private String model;
+    private String year;
+    private String color;
+    private String seats;
+    private String price;
+
+    public Car() {
+    }
+
+    public Car(String maker, String model) {
+        this.maker = maker;
+        this.model = model;
+    }
+
+    public Car(String maker, String model, String year, String color, String seats, String price) {
+        this.maker = maker;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.seats = seats;
+        this.price = price;
+    }
+
+    public String getMaker() {
+        return maker;
+    }
+
+    public void setMaker(String maker) {
+        this.maker = maker;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSeats() {
+        return seats;
+    }
+
+    public void setSeats(String seats) {
+        this.seats = seats;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+}
