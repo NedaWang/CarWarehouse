@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.neda.carwarehouse.databinding.CarInfoFormBinding;
 import com.neda.carwarehouse.databinding.CoordinatorLayoutBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    private @NonNull CoordinatorLayoutBinding binding = CoordinatorLayoutBinding.inflate(getLayoutInflater());;
-    private CarInfoFormBinding carInfoFormBinding;
+    private @NonNull CoordinatorLayoutBinding binding;
+    //private CarInfoFormBinding carInfoFormBinding;
 
     private FloatingActionButton fab;
     private EditText maker;
@@ -24,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText color;
     private EditText seats;
     private EditText price;
+    private ListView listView;
+    private ArrayList<Car> cars = new ArrayList<>();
+    private ArrayList<String> carsString = new ArrayList<>();
+    private ArrayAdapter<String> adapter;
 
 
 
@@ -32,28 +40,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //setContentView(R.layout.coordinator_layout);
+        binding = CoordinatorLayoutBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         // get binding for included layouts
-        carInfoFormBinding = carInfoFormBinding.bind(view);
-        maker = carInfoFormBinding.edMaker;
-        modle = carInfoFormBinding.etModle;
-        year = carInfoFormBinding.etYear;
-        color = carInfoFormBinding.etColor;
-        price = carInfoFormBinding.etPrice;
-        seats = carInfoFormBinding.etSeats;
+        // carInfoFormBinding = carInfoFormBinding.bind(view);
+
+        maker = binding.carInfoForm.edMaker;
+        modle = binding.carInfoForm.etModle;
+        year = binding.carInfoForm.etYear;
+        color = binding.carInfoForm.etColor;
+        price = binding.carInfoForm.etPrice;
+        seats = binding.carInfoForm.etSeats;
+        listView = binding.carInfoForm.listview;
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,carsString);
+        listView.setAdapter(adapter);
 
         fab = binding.fab;
-        fab.setOnClickListener(v -> Snackbar.make(v,"Hello", Snackbar.LENGTH_SHORT).show());
+        fab.setOnClickListener(v -> {
+            Car car = makeCar();
+            cars.add(car);
+            carsString.add(car.toString());
+            adapter.notifyDataSetChanged();
+        });
     }
 
-    private String getCarInfoString(){
-        return maker.getText().toString() + " |" +
-                modle.getText().toString() + " |" +
-                year.getText().toString() + " |" +
-                color.getText().toString() + " |" +
-                seats.getText().toString() + " |" +
-                price.getText().toString();
+    private Car makeCar(){
+        return new Car(maker.getText().toString(),
+                modle.getText().toString(),
+                year.getText().toString(),
+                color.getText().toString(),
+                seats.getText().toString(),
+                price.getText().toString());
     }
 }

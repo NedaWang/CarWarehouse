@@ -25,6 +25,18 @@ public class Car {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "maker='" + maker + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", color='" + color + '\'' +
+                ", seats='" + seats + '\'' +
+                ", price='" + price + '\'' +
+                '}';
+    }
+
     public String getMaker() {
         return maker;
     }
