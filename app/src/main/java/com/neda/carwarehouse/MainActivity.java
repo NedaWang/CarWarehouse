@@ -14,11 +14,14 @@ import com.google.android.material.snackbar.Snackbar;
 import com.neda.carwarehouse.databinding.CarInfoFormBinding;
 import com.neda.carwarehouse.databinding.CoordinatorLayoutBinding;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private @NonNull CoordinatorLayoutBinding binding;
+    private CoordinatorLayoutBinding binding;
     //private CarInfoFormBinding carInfoFormBinding;
 
     private FloatingActionButton fab;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         price = binding.carInfoForm.etPrice;
         seats = binding.carInfoForm.etSeats;
         listView = binding.carInfoForm.listview;
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,carsString);
+        adapter = new ArrayAdapter<>(this,R.layout.textview_for_listview,carsString);
         listView.setAdapter(adapter);
 
         fab = binding.fab;
@@ -66,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private Car makeCar(){
+    @Contract(" -> new")
+    private @NotNull Car makeCar(){
         return new Car(maker.getText().toString(),
                 modle.getText().toString(),
                 year.getText().toString(),

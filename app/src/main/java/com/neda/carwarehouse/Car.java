@@ -1,5 +1,7 @@
 package com.neda.carwarehouse;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Car {
     private String maker;
     private String model;
@@ -26,15 +28,13 @@ public class Car {
     }
 
     @Override
-    public String toString() {
-        return "Car{" +
-                "maker='" + maker + '\'' +
-                ", model='" + model + '\'' +
-                ", year='" + year + '\'' +
-                ", color='" + color + '\'' +
-                ", seats='" + seats + '\'' +
-                ", price='" + price + '\'' +
-                '}';
+    public @NotNull String toString() {
+        return "maker='" + maker +
+                ", model='" + model +
+                ", year='" + year +
+                ", color='" + color +
+                ", seats='" + seats +
+                ", price='" + price; // + '\'' +
     }
 
     public String getMaker() {
