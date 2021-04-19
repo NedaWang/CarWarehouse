@@ -1,4 +1,4 @@
-package com.neda.carwarehouse;
+package com.neda.carwarehouse.entity;
 
 import org.jetbrains.annotations.NotNull;
 

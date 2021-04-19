@@ -1,6 +1,5 @@
 package com.neda.carwarehouse;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,9 +9,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.neda.carwarehouse.databinding.CarInfoFormBinding;
 import com.neda.carwarehouse.databinding.CoordinatorLayoutBinding;
+import com.neda.carwarehouse.entity.Car;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
