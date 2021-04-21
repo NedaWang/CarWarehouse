@@ -6,4 +6,8 @@
     <string name="color">Color</string>
     <string name="seats">Seats</string>
     <string name="price">Price</string>
+
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+
 </resources>

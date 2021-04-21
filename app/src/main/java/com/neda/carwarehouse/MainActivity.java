@@ -1,6 +1,9 @@
 package com.neda.carwarehouse;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.neda.carwarehouse.databinding.CoordinatorLayoutBinding;
 import com.neda.carwarehouse.entity.Car;
 
@@ -34,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> carsString = new ArrayList<>();
     private ArrayAdapter<String> adapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         // get binding for included layouts
         // carInfoFormBinding = carInfoFormBinding.bind(view);
-
         maker = binding.carInfoForm.edMaker;
         modle = binding.carInfoForm.etModle;
         year = binding.carInfoForm.etYear;

@@ -1,7 +1,10 @@
 package com.neda.carwarehouse;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -16,7 +19,10 @@ public class NavDrawerActivity extends AppCompatActivity {
 
     ActivityNavDrawerBinding binding;
 
-    NavigationView navigationView;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,16 @@ public class NavDrawerActivity extends AppCompatActivity {
         binding = ActivityNavDrawerBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        toolbar = binding.coordinatorLayout.toolbar;
+        setSupportActionBar(toolbar);
+
+        drawerLayout = binding.drawerLayout;
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         navigationView = binding.navView;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
