@@ -19,15 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:text="@string/maker"
-        app:layout_constraintBaseline_toBaselineOf="@+id/ed_maker"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_maker"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_modle"
+        android:id="@+id/tv_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/model"
-        app:layout_constraintBaseline_toBaselineOf="@+id/et_modle"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_model"
         app:layout_constraintEnd_toEndOf="@+id/tv_maker"
         app:layout_constraintStart_toStartOf="@+id/tv_maker" />
 
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:text="@string/year"
         app:layout_constraintBaseline_toBaselineOf="@+id/et_year"
-        app:layout_constraintEnd_toEndOf="@+id/tv_modle"
-        app:layout_constraintStart_toStartOf="@+id/tv_modle" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_model"
+        app:layout_constraintStart_toStartOf="@+id/tv_model" />
 
     <TextView
         android:id="@+id/tv_color"
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_seats" />
 
     <EditText
-        android:id="@+id/ed_maker"
+        android:id="@+id/et_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -84,15 +84,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_modle"
+        android:id="@+id/et_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:autofillHints="@string/model"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/ed_maker"
-        app:layout_constraintTop_toBottomOf="@+id/ed_maker" />
+        app:layout_constraintStart_toStartOf="@+id/et_maker"
+        app:layout_constraintTop_toBottomOf="@+id/et_maker" />
 
     <EditText
         android:id="@+id/et_year"
@@ -102,8 +102,8 @@
         android:ems="10"
         android:inputType="number"
         android:autofillHints="@string/year"
-        app:layout_constraintStart_toStartOf="@+id/et_modle"
-        app:layout_constraintTop_toBottomOf="@+id/et_modle" />
+        app:layout_constraintStart_toStartOf="@+id/et_model"
+        app:layout_constraintTop_toBottomOf="@+id/et_model" />
 
     <EditText
         android:id="@+id/et_color"

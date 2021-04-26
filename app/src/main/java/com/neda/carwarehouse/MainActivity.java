@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         // get binding for included layouts
         // carInfoFormBinding = carInfoFormBinding.bind(view);
-        maker = binding.carInfoForm.edMaker;
-        modle = binding.carInfoForm.etModle;
+        maker = binding.carInfoForm.etMaker;
+        modle = binding.carInfoForm.etModel;
         year = binding.carInfoForm.etYear;
         color = binding.carInfoForm.etColor;
         price = binding.carInfoForm.etPrice;
