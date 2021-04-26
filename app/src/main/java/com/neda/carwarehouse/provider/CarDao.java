@@ -22,5 +22,5 @@ public interface CarDao {
     void deleteAllCars();
 
     @Query("select * from cars where year < :year")
-    void getCarsByYear(String year);
+    LiveData<List<Car>> getCarsByYear(String year);
 }

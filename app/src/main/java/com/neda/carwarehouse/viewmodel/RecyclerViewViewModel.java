@@ -1,24 +1,25 @@
 package com.neda.carwarehouse.viewmodel;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
 import com.neda.carwarehouse.entity.Car;
 import com.neda.carwarehouse.provider.Repository;
 
-public class NavDrawerViewModel extends AndroidViewModel {
+import java.util.List;
+
+public class RecyclerViewViewModel extends AndroidViewModel {
     Repository repository;
 
-    public NavDrawerViewModel(@NonNull Application application) {
+    public RecyclerViewViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
     }
 
-    public void addCar(Car car){
-        repository.addCar(car);
-    }
-
-    public void deleteAllCars(){
-        repository.deleteAllCars();
+    public LiveData<List<Car>> getAllCars(){
+        return repository.getAllCars();
     }
 }

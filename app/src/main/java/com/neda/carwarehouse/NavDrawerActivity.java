@@ -42,11 +42,34 @@ public class NavDrawerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        viewModel = new ViewModelProvider(this).get(NavDrawerViewModel.class);
+
+        bindViews();
+        setToolbar();
+        defineNavDrawerItems();
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.addCar(createCar());
+            }
+        });
+    }
+
+    Car createCar(){
+        return new Car(maker.getText().toString(),
+                model.getText().toString(),
+                year.getText().toString(),
+                color.getText().toString(),
+                seats.getText().toString(),
+                price.getText().toString());
+    }
+
+    void bindViews(){
+
         binding = ActivityNavDrawerBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-        viewModel = new ViewModelProvider(this).get(NavDrawerViewModel.class);
 
         fab = binding.coordinatorLayout.fab;
         maker = binding.coordinatorLayout.carInfoForm.etMaker;
@@ -57,16 +80,20 @@ public class NavDrawerActivity extends AppCompatActivity {
         price = binding.coordinatorLayout.carInfoForm.etPrice;
 
         toolbar = binding.coordinatorLayout.toolbar;
-        setSupportActionBar(toolbar);
-
         drawerLayout = binding.drawerLayout;
+        navigationView = binding.navView;
+    }
+
+    void setToolbar(){
+        setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+    }
 
-        navigationView = binding.navView;
+    void defineNavDrawerItems(){
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -82,19 +109,11 @@ public class NavDrawerActivity extends AppCompatActivity {
                     case R.id.remove_last_car:
                         break;
                     case R.id.remove_all_cars:
+                        viewModel.deleteAllCars();
                         break;
                 }
                 return true;
             }
         });
-    }
-
-    Car createCar(){
-        return new Car(maker.getText().toString(),
-                model.getText().toString(),
-                year.getText().toString(),
-                color.getText().toString(),
-                seats.getText().toString(),
-                price.getText().toString());
     }
 }

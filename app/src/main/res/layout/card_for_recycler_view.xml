@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="@color/purple_200"
+    card_view:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/card_label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/card_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/card_label1"
+            app:layout_constraintStart_toStartOf="@+id/card_label1"
+            app:layout_constraintTop_toBottomOf="@+id/card_label1" />
+
+        <TextView
+            android:id="@+id/card_label3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/card_label2"
+            app:layout_constraintStart_toStartOf="@+id/card_label2"
+            app:layout_constraintTop_toBottomOf="@+id/card_label2" />
+
+        <TextView
+            android:id="@+id/card_tv_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/card_label1"
+            app:layout_constraintStart_toEndOf="@+id/card_label1" />
+
+        <TextView
+            android:id="@+id/card_tv_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/card_label2"
+            app:layout_constraintStart_toStartOf="@+id/card_tv_maker" />
+
+        <TextView
+            android:id="@+id/card_tv_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/card_label3"
+            app:layout_constraintStart_toStartOf="@+id/card_tv_model" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
