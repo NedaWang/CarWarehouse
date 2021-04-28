@@ -42,7 +42,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     void bindViews(){

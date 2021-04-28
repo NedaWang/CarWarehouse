@@ -7,8 +7,13 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-@Entity (tableName = "cars")
+import static com.neda.carwarehouse.entity.Car.TABLE_NAME;
+
+@Entity (tableName = TABLE_NAME)
 public class Car {
+
+    public static final String TABLE_NAME = "cars";
+
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo (name = "id")

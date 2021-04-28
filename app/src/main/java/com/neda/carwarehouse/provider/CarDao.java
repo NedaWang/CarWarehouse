@@ -1,5 +1,7 @@
 package com.neda.carwarehouse.provider;
 
+import android.database.Cursor;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -19,8 +21,17 @@ public interface CarDao {
     void addCar(Car car);
 
     @Query("delete from cars")
-    void deleteAllCars();
+    int deleteAllCars();
+
+    @Query("delete from cars where year < :year")
+    int deleteCarsByYear(String year);
 
     @Query("select * from cars where year < :year")
-    LiveData<List<Car>> getCarsByYear(String year);
+    Cursor findCarsByYear(String year);
+
+    @Query("select * from cars")
+    Cursor getAllCarsCursor();
+
+    @Query("select * from cars where maker = :maker")
+    Cursor findCarsByMaker(String maker);
 }

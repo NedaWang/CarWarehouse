@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "977545669814",
+    "firebase_url": "https://fit2081-nedawang-default-rtdb.firebaseio.com",
+    "project_id": "fit2081-nedawang",
+    "storage_bucket": "fit2081-nedawang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977545669814:android:8a4cfabfc78b21e84bca17",
+        "android_client_info": {
+          "package_name": "com.neda.carwarehouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977545669814-i45ec5anr90djsuhgga7s2ps07tiu1mn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADDy2eX6w4r_lq1i_doPSpbqa-gw6UEdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977545669814-i45ec5anr90djsuhgga7s2ps07tiu1mn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
