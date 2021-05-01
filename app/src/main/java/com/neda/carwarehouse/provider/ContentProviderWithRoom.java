@@ -1,6 +1,7 @@
 package com.neda.carwarehouse.provider;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
@@ -35,7 +36,14 @@ public class ContentProviderWithRoom extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return carDao.deleteAllCars();
+        //return carDao.deleteAllCars();
+        int deletionCount;
+        deletionCount = carWarhouseRoomDatabase
+                .getOpenHelper()
+                .getWritableDatabase()
+                .delete("cars", selection, selectionArgs);
+
+        return deletionCount;
     }
 
     @Override
@@ -47,8 +55,11 @@ public class ContentProviderWithRoom extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        // TODO: Implement this to handle requests to insert a new row.
-        throw new UnsupportedOperationException("Not yet implemented");
+        long rowId = carWarhouseRoomDatabase
+                .getOpenHelper()
+                .getWritableDatabase()
+                .insert(Car.TABLE_NAME, 0, values);
+        return ContentUris.withAppendedId(CONTENT_URI, rowId);
     }
 
     @Override

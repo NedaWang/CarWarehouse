@@ -51,5 +51,14 @@ public class Repository {
         });
     }
 
+//    public int deleteCarsByYear(String year){
+//        CarWarhouseRoomDatabase.databaseWriteExecutor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                carDao.deleteCarsByYear(year);
+//            }
+//        });
+//    }
+
 
 }
