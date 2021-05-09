@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 
 import com.neda.carwarehouse.entity.Car;
 
@@ -17,31 +18,42 @@ public class ContentProviderWithRoom extends ContentProvider {
     CarWarhouseRoomDatabase carWarhouseRoomDatabase;
     CarDao carDao;
 
+    static String authority = CONTENT_AUTHORITY;
+    static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int MULTIPLE_ROWS_TASKS = 1;
     private static final int SINGLE_ROW_TASKS = 2;
-
-    public ContentProviderWithRoom() {
-    }
-
-    private static UriMatcher createUriMatcher() {
-        final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        final String authority = CONTENT_AUTHORITY;
+    private static final int SELECT_BY_YEAR = 3;
+    static {
         //sUriMatcher will return code 1 if uri like authority/tasks
         uriMatcher.addURI(authority, Car.TABLE_NAME, MULTIPLE_ROWS_TASKS);
         //sUriMatcher will return code 2 if uri like e.g. authority/tasks/7 (where 7 is id of row in tasks table)
         //the ‘#’ character represents an integer value which represents an ID.
         uriMatcher.addURI(authority, Car.TABLE_NAME + "/#", SINGLE_ROW_TASKS);
-        return uriMatcher;
+        uriMatcher.addURI(authority,Car.TABLE_NAME + "/year/#",SELECT_BY_YEAR);
+    }
+
+    public ContentProviderWithRoom() {
+    }
+
+    @Override
+    public boolean onCreate() {
+        carWarhouseRoomDatabase = CarWarhouseRoomDatabase.getDatabase(getContext());
+        carDao = carWarhouseRoomDatabase.getCarDao();
+        return true;
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        //return carDao.deleteAllCars();
-        int deletionCount;
-        deletionCount = carWarhouseRoomDatabase
-                .getOpenHelper()
-                .getWritableDatabase()
-                .delete("cars", selection, selectionArgs);
+        int uriType = uriMatcher.match(uri);
+        int deletionCount = 0;
+
+        switch (uriType){
+            case MULTIPLE_ROWS_TASKS:
+                carDao.deleteAllCars();
+            case SELECT_BY_YEAR:
+                Log.d("deleteCarsByYear",uri.getLastPathSegment());
+                deletionCount = carDao.deleteCarsByYear(uri.getLastPathSegment());
+        }
 
         return deletionCount;
     }
@@ -62,12 +74,7 @@ public class ContentProviderWithRoom extends ContentProvider {
         return ContentUris.withAppendedId(CONTENT_URI, rowId);
     }
 
-    @Override
-    public boolean onCreate() {
-        carWarhouseRoomDatabase = CarWarhouseRoomDatabase.getDatabase(getContext());
-        carDao = carWarhouseRoomDatabase.getCarDao();
-        return true;
-    }
+
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,

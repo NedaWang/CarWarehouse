@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -47,6 +47,7 @@ public class NavDrawerActivity extends AppCompatActivity {
         bindViews();
         setToolbar();
         defineNavDrawerItems();
+        getSupportActionBar().setTitle("Car Warehouse");
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,4 +117,29 @@ public class NavDrawerActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /*
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId){
+            case R.id.op_clear_field:
+                maker.setText("");
+                model.setText("");
+                year.setText("");
+                color.setText("");
+                seats.setText("");
+                price.setText("");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    */
+
 }
