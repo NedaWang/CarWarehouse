@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWarehouse">
+        <activity android:name=".GestureActivity"></activity>
+
         <provider
             android:name=".provider.ContentProviderWithRoom"
             android:authorities="ContentProviderWithRoom"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
         <provider
             android:name=".provider.ContentProviderWithHelper"
             android:authorities="ContentProviderWithHelper"

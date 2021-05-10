@@ -112,6 +112,10 @@ public class NavDrawerActivity extends AppCompatActivity {
                     case R.id.remove_all_cars:
                         viewModel.deleteAllCars();
                         break;
+                    case R.id.go_to_gesture:
+                        Intent intent2 = new Intent(NavDrawerActivity.this, GestureActivity.class);
+                        startActivity(intent2);
+                        break;
                 }
                 return true;
             }
