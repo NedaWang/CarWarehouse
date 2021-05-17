@@ -20,8 +20,14 @@ public class MultiPointerActivity extends AppCompatActivity {
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
-                Log.d("Week11Log",LogGenerator.getEventType(event.getActionMasked()));
+//                if(event.getActionMasked()!=MotionEvent.ACTION_MOVE) {
+//                    Log.d("Week11Log", LogGenerator.getEventType(event.getActionMasked()) + ". pointer count: " + event.getPointerCount());
+//                }
+                if(event.getActionMasked()==MotionEvent.ACTION_POINTER_DOWN){
+                    LogGenerator.log(""+event.getActionIndex());
+                    int id = event.getPointerId(event.getActionIndex());
+                    int indx = event.findPointerIndex(id);
+                }
                 return true;
             }
         });

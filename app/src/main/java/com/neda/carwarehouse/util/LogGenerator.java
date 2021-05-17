@@ -17,7 +17,7 @@ public class LogGenerator {
                 event_type = "action up";
                 break;
             case MotionEvent.ACTION_MOVE:
-//                event_type = "action move";
+                event_type = "action move";
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 event_type = "action pointre down";
