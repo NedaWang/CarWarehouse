@@ -1,5 +1,6 @@
 package com.neda.carwarehouse.util;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 public class LogGenerator {
@@ -16,7 +17,13 @@ public class LogGenerator {
                 event_type = "action up";
                 break;
             case MotionEvent.ACTION_MOVE:
-                event_type = "action move";
+//                event_type = "action move";
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                event_type = "action pointre down";
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                event_type = "action pointre up";
                 break;
             default:
                 event_type = "unkown";
@@ -26,6 +33,10 @@ public class LogGenerator {
 
     public static String getMessage(String source, String method, int eventType){
         return String.format("%-15s | %-15s | %-15s",source,method,getEventType(eventType));
+    }
+
+    public static void log(String s){
+        Log.d("Week11Log",s);
     }
 
 }

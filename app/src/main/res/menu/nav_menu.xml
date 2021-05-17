@@ -21,4 +21,10 @@
         android:id="@+id/go_to_gesture"
         android:icon="@drawable/ic_baseline_arrow_forward_24"
         android:title="Gesture Page" />
+    <item
+        android:id="@+id/go_to_scale"
+        android:title="Scale Page" />
+    <item
+        android:id="@+id/go_to_multi"
+        android:title="MultiPointer Page" />
 </menu>

@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWarehouse">
-        <activity android:name=".GestureActivity"></activity>
+        <activity android:name=".MultiPointerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ScaleActivity">
+
+        </activity>
+        <activity android:name=".GestureActivity" />
 
         <provider
             android:name=".provider.ContentProviderWithRoom"
@@ -23,13 +32,7 @@
             android:exported="true" />
 
         <activity android:name=".RecyclerViewActivity" />
-        <activity android:name=".NavDrawerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".NavDrawerActivity"></activity>
         <activity android:name=".MainActivity" />
     </application>
 

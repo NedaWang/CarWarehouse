@@ -11,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.neda.carwarehouse.util.LogGenerator;
 
+import java.util.Calendar;
+
 public class MyConstraintLayout extends ConstraintLayout {
     public MyConstraintLayout(@NonNull Context context) {
         super(context);
@@ -30,13 +32,18 @@ public class MyConstraintLayout extends ConstraintLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.d(LogGenerator.LOG_KEY,LogGenerator.getMessage("ConstraintLayout","dispatchTouchEvent",event.getActionMasked()));
+        if (event.getActionMasked() == 0 || event.getActionMasked() == 1) {
+            Log.d(LogGenerator.LOG_KEY, LogGenerator.getMessage("ConstraintLayout " + Calendar.getInstance().getTimeInMillis(), "dispatch " + super.dispatchTouchEvent(event), event.getActionMasked()));
+        }
         return super.dispatchTouchEvent(event);
+//        return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(LogGenerator.LOG_KEY,LogGenerator.getMessage("ConstraintLayout","onTouchEvent",event.getActionMasked()));
+        if (event.getActionMasked() == 0 || event.getActionMasked() == 1) {
+            Log.d(LogGenerator.LOG_KEY, LogGenerator.getMessage("ConstraintLayout " + Calendar.getInstance().getTimeInMillis(), "onTouchEvent " + super.onTouchEvent(event), event.getActionMasked()));
+        }
         return super.onTouchEvent(event);
     }
 }

@@ -11,6 +11,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.neda.carwarehouse.util.LogGenerator;
 
+import java.util.Calendar;
+
 public class MyTextView extends AppCompatTextView {
 
     public MyTextView(@NonNull Context context) {
@@ -27,13 +29,18 @@ public class MyTextView extends AppCompatTextView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.d(LogGenerator.LOG_KEY,LogGenerator.getMessage("TextView","dispatchTouchEvent",event.getActionMasked()));
+        if (event.getActionMasked()==0 || event.getActionMasked()==1) {
+            Log.d(LogGenerator.LOG_KEY, LogGenerator.getMessage("TextView " + Calendar.getInstance().getTimeInMillis(), "dispatch " + super.dispatchTouchEvent(event), event.getActionMasked()));
+        }
         return super.dispatchTouchEvent(event);
+//        return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(LogGenerator.LOG_KEY,LogGenerator.getMessage("TextView","onTouchEvent",event.getActionMasked()));
-        return super.onTouchEvent(event);
+        if (event.getActionMasked()==0 || event.getActionMasked()==1) {
+            Log.d(LogGenerator.LOG_KEY, LogGenerator.getMessage("TextView " + Calendar.getInstance().getTimeInMillis(), "onTouchEvent " + super.onTouchEvent(event), event.getActionMasked()));
+        }
+        return false;
     }
 }

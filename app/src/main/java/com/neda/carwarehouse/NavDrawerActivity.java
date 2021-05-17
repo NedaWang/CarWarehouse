@@ -4,15 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -27,6 +31,8 @@ public class NavDrawerActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
+    private ConstraintLayout constraintLayout;
+
 
     private NavDrawerViewModel viewModel;
 
@@ -37,6 +43,7 @@ public class NavDrawerActivity extends AppCompatActivity {
     private EditText color;
     private EditText seats;
     private EditText price;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,40 @@ public class NavDrawerActivity extends AppCompatActivity {
                 viewModel.addCar(createCar());
             }
         });
+
+
+
+//        constraintLayout.setOnTouchListener(new View.OnTouchListener() {
+//            float x = 0;
+//            float y = 0;
+//            float price_f = 0;
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getActionMasked()){
+//                    case MotionEvent.ACTION_DOWN:
+//                        x = event.getRawX();
+//                        y = event.getRawY();
+//                        Log.d("Week10Log","down, "+event.getRawX()+", "+event.getRawY());
+//                        return true;
+//                    case MotionEvent.ACTION_MOVE:
+//                        price_f += event.getRawY();
+//                        Log.d("Week10Log","move, "+event.getRawX()+", "+event.getRawY());
+//                        return true;
+//                    case MotionEvent.ACTION_UP:
+//                        Log.d("Week10Log","up, "+(Math.abs(event.getRawX() - x))+", "+(y-event.getRawY())+", y="+y+", newY="+event.getRawY());
+//
+//                        if ((Math.abs(event.getRawX() - x) <50) && (y-event.getRawY()) >50){
+//                            price.setText(""+price_f);
+//                            //viewModel.addCar(createCar());
+//                            return true;
+//                        }
+//                    default:
+//                        return false;
+//                }
+//            }
+//        });
+
+
     }
 
     Car createCar(){
@@ -83,6 +124,8 @@ public class NavDrawerActivity extends AppCompatActivity {
         toolbar = binding.coordinatorLayout.toolbar;
         drawerLayout = binding.drawerLayout;
         navigationView = binding.navView;
+        constraintLayout = binding.coordinatorLayout.carInfoForm.carInfoFormConstraintLayout;
+
     }
 
     void setToolbar(){
@@ -115,6 +158,14 @@ public class NavDrawerActivity extends AppCompatActivity {
                     case R.id.go_to_gesture:
                         Intent intent2 = new Intent(NavDrawerActivity.this, GestureActivity.class);
                         startActivity(intent2);
+                        break;
+                    case R.id.go_to_scale:
+                        Intent intent3 = new Intent(NavDrawerActivity.this, ScaleActivity.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.go_to_multi:
+                        Intent intent4 = new Intent(NavDrawerActivity.this, MultiPointerActivity.class);
+                        startActivity(intent4);
                         break;
                 }
                 return true;
